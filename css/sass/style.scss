@@ -688,6 +688,17 @@ header.ui.vertical.segment{
         @include responsive(mobile){
           margin-left: 0!important;
         }
+        @include responsive (tablet+mobile){
+          padding-bottom: 1em;
+        }
+        .column.row{
+        .column.empty{
+          @include responsive (tablet+mobile){
+            margin: 0!important;
+            padding:0!important;
+          }
+          }
+        }
       }
 
       .one.column.main_logo{
@@ -695,6 +706,8 @@ header.ui.vertical.segment{
       }
       .three.column.last{
         padding-bottom: 0;
+
+
       }
 
       img.logo_0, .sidebar{

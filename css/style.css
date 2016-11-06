@@ -412,6 +412,13 @@ header.ui.vertical.segment {
         @media only screen and (max-width: 767px) {
           #section1 .segment3 .digit-re-group .ui.container.stackable.grid {
             margin-left: 0 !important; } }
+        @media only screen and (max-width: 991px) {
+          #section1 .segment3 .digit-re-group .ui.container.stackable.grid {
+            padding-bottom: 1em; } }
+        @media only screen and (max-width: 991px) {
+          #section1 .segment3 .digit-re-group .ui.container.stackable.grid .column.row .column.empty {
+            margin: 0 !important;
+            padding: 0 !important; } }
       #section1 .segment3 .digit-re-group .one.column.main_logo {
         padding-bottom: 2em; }
       #section1 .segment3 .digit-re-group .three.column.last {
