@@ -8,7 +8,8 @@ $(document)
 
     $('.ui.sticky')
       .sticky({
-        context: '.sections'
+        context: '.sections',
+        silent: true
       })
     ;
 
