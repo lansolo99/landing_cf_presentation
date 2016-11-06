@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properities -->
+  <title>Capifrance</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="http://www.capifrance.fr/bundles/capiapp/images/favicons/apple-touch-icon-57x57.png?v=E66W2ljzJX">
+  <link rel="apple-touch-icon" sizes="60x60" href="http://www.capifrance.fr/bundles/capiapp/images/favicons/apple-touch-icon-60x60.png?v=E66W2ljzJX">
+  <link rel="apple-touch-icon" sizes="72x72" href="http://www.capifrance.fr/bundles/capiapp/images/favicons/apple-touch-icon-72x72.png?v=E66W2ljzJX">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://www.capifrance.fr/bundles/capiapp/images/favicons/apple-touch-icon-76x76.png?v=E66W2ljzJX">
+  <link rel="apple-touch-icon" sizes="114x114" href="http://www.capifrance.fr/bundles/capiapp/images/favicons/apple-touch-icon-114x114.png?v=E66W2ljzJX">
+  <link rel="apple-touch-icon" sizes="120x120" href="http://www.capifrance.fr/bundles/capiapp/images/favicons/apple-touch-icon-120x120.png?v=E66W2ljzJX">
+  <link rel="icon" type="image/png" href="http://www.capifrance.fr/bundles/capiapp/images/favicons/favicon-32x32.png?v=E66W2ljzJX&quot; sizes=&quot;32x32">
+  <link rel="icon" type="image/png" href="http://www.capifrance.fr/bundles/capiapp/images/favicons/favicon-96x96.png?v=E66W2ljzJX&quot; sizes=&quot;96x96">
+  <link rel="icon" type="image/png" href="http://www.capifrance.fr/bundles/capiapp/images/favicons/favicon-16x16.png?v=E66W2ljzJX&quot; sizes=&quot;16x16">
+  <link rel="manifest" href="http://www.capifrance.fr/bundles/capiapp/images/favicons/manifest.json?v=E66W2ljzJX">
+  <link rel="mask-icon" href="http://www.capifrance.fr/bundles/capiapp/images/favicons/safari-pinned-tab.svg?v=E66W2ljzJX" color="#5bbad5">
+  <link rel="shortcut icon" href="http://www.capifrance.fr/bundles/capiapp/images/favicons/favicon.ico?v=E66W2ljzJX">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="css/jquery.reject.css" />
+  <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.css">
+  <link rel="stylesheet" href="css/owl.theme.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src="js/jquery.reject.js"></script>
+
+
+
+  <!-- REJECT OLD BROWSER -->
+  <script>
+  $(function() {
+    // Handle external links
+    $('a[rel="external"]').click(function() {
+      var href = $(this).attr('href');
+
+      // Send external link event to Google Analytics
+      try {
+        _gaq.push(['_trackEvent','External Links', href.split(/\/+/g)[1], href]);
+      } catch (e) {};
+
+      window.open(href,'jr_'+Math.round(Math.random()*11));
+      return false;
+    });
+
+    // Handle displaying of option links
+    $('em.option').css({
+      cursor: 'pointer',
+      fontSize: '1.1em',
+      color: '#333',
+      letterSpacing: '1px',
+      borderBottom: '1px dashed #BBB'
+    }).click(function() {
+      var self = $(this);
+      var opt = $.trim(self.text());
+
+      $('ol.dp-c:first').children('li').children('span').each(function() {
+        var self = $(this);
+        var text = self.text();
+        var srch = opt+':';
+
+        // If found, highlight and jump window to position on page
+        if (text.search(srch) !== -1) {
+          self.css('color','red');
+          window.location.hash = '#c-'+opt;
+          window.scrollTo(0,self[0].offsetTop);
+        }
+      });
+    });
+
+
+
+    function excludeOldIE(){
+      $.reject({
+        reject: {
+          // safari: true, // Apple Safari
+          // chrome: true, // Google Chrome
+          // firefox: true, // Mozilla Firefox
+          msie: 9, // Microsoft Internet Explorer
+          opera: true, // Opera
+          konqueror: true, // Konqueror (Linux)
+          // unknown: false // Everything else
+        },
+        header: 'Navigateur non compatible ', // Header Text
+        paragraph1: 'L\'affichage de cette page n\'est pas optimisé pour fonctionner avec une version d\'Internet Explorer antérieur à 10 ou avec le navigateur Opéra. Veuillez vous référer à un des navigateurs suivant afin d\'effectuer le test dans de bonne conditions. Nous vous recommandons d\'utiliser Chrome.', // Paragraph 1
+        paragraph2: '',
+        display: ['chrome','firefox','safari'],
+        close: false
+      }); // Customized Browsers
+
+      return false;
+    }
+
+    excludeOldIE();
+
+
+  });
+  </script>
+
+
+
+</head>
+<body>
+
+  <!-- FIXED NAV -->
+
+  <div id="fixedNav" class="ui large top fixed menu">
+        <div class="ui container">
+          <a id="logo" href="http://www.capifrance.fr/" target="_blank">
+            <img src="images/logo-capifrance.svg" alt="Capifrance">
+          </a>
+          <div class="right item">
+          <ul class="right nav">
+            <li>
+              <a href="#section1" class="item section1 active">Présentation <br>&amp; historique</a>
+            </li>
+            <li>
+              <a href="#section2" class="item section2">l’immobilier<br> connecté</a>
+            </li>
+            <li>
+              <a href="#section3" class="item section3">DES PROJETS<br> AMBITIEUX</a>
+            </li>
+            <li>
+              <a href="#section4" class="item section4">LE SERVICE INÉDIT<br> « à L’ESSAI »</a>
+            </li>
+            <li>
+              <a href="#" class="item">TéLéCHARGEZ LE<br> DOSSIER DE PRESse</a>
+            </li>
+          </ul>
+          </div>
+        </div>
+      </div>
+
+
+    <!-- MOBILE HEADER -->
+
+    <header class="ui vertical segment">
+      <div class="ui container">
+        <a id="logo" href="http://www.capifrance.fr/" target="_blank">
+          <img src="images/logo-capifrance.svg" alt="Capifrance">
+        </a>
+      </div>
+    </header>
+
+
+
+    <!-- SECTIONS -->
+
+    <div class="ui container sections">
+
+      <!-- Sticky -->
+      <div class="ui right rail">
+        <div class="ui sticky">
+          <a href="mailto:ibpr@gmail.com">
+            <img class="desktop" src="images/sticky_capifrance.png" srcset="images/sticky_capifrance.png 1x, images/sticky_capifrance@2x.png 2x">
+          </a>
+        </div>
+      </div>
+
+
+
+
+    <!-- SECTION 1 -->
+
+    <section id="section1" class="ui container section_bp">
+
+      <!-- sous-segment 1 -->
+      <div class="ui stackable grid container segment1 color-bg-dark">
+        <div class="one column center aligned row ">
+          <div class="column">
+            <h1>
+              <span class="part1">PRÉSENTATION</span>
+              <span class="part2">&amp; Historique</span>
+            </h1>
+            <div class="h2-group">
+              <h2>Capifrance, un acteur majeur dans l’univers de la transaction immobilière</h2>
+            </div>
+            <div class="video">
+              <img src="images/video_thumb_01.jpg" alt="">
+            </div>
+            <div class="h2-group timeline">
+              <h2>Bientôt 15 ans d'exigence au service de ses clients</h2>
+              <p>En 2002, Capifrance crée le premier réseau de conseillers immobiliers indépendants en France.
+  L’agence physique disparaît  du modèle économique et Internet devient la principale vitrine.
+  Les clients sont accompagnés par des conseillers de proximité, répartis partout en France et dans les DOM.</p>
+            </div>
+          </div>
+        </div>
+        <div class="one column center aligned row ">
+          <div class="column timeline">
+            <img class="desktop" src="images/section1_segment1_timeline.png" srcset="images/section1_segment1_timeline.png 1x, images/section1_segment1_timeline@2x.png 2x">
+            <img class="mobile" src="images/section1_segment1_timeline_mobile.png" srcset="images/section1_segment1_timeline_mobile.png 1x, images/section1_segment1_timeline_mobile@2x.png 2x">
+          </div>
+        </div>
+      </div>
+      <!-- fin sous-segment 1 -->
+
+      <!-- sous-segment 2 -->
+      <div class="ui stackable grid container segment2 color-bg-light">
+
+        <div class="one column center aligned row ">
+          <div class="column">
+            <div class="h2-group last">
+              <h2>Un modèle reconnu, chiffres à l’appui</h2>
+              <p>Grâce à un maillage territorial étendu, des moyens humains solides, des technologies modernes et
+une présence sur les principaux sites Internet immobiliers, Capifrance reste aujourd’hui leader de son secteur.</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="one column center aligned row">
+          <div class="column">
+            <p class="red-title">En 2016, Capifrance c'est :</p>
+          </div>
+        </div>
+
+        <div class="three column center aligned row chiffres">
+          <div class="column">
+            <img src="images/section1_segment1_chiffres_col1.png" srcset="images/section1_segment1_chiffres_col1.png 1x, images/section1_segment1_chiffres_col1@2x.png 2x">
+          </div>
+          <div class="column">
+            <img src="images/section1_segment1_chiffres_col2.png" srcset="images/section1_segment1_chiffres_col2.png 1x, images/section1_segment1_chiffres_col2@2x.png 2x">
+          </div>
+          <div class="column">
+            <img src="images/section1_segment1_chiffres_col3.png" srcset="images/section1_segment1_chiffres_col3.png 1x, images/section1_segment1_chiffres_col3@2x.png 2x">
+          </div>
+        </div>
+
+      </div>
+      <!-- fin sous-segment 2 -->
+
+      <!-- sous-segment 3 -->
+      <div class="ui stackable grid container segment3 color-bg-dark">
+        <div class="one column center aligned row">
+          <div class="column">
+            <div class="h2-group">
+              <h2>Filiale d’Artémis &amp; soutenue par Digit RE Group</h2>
+              <p>Dès 2011, Capifrance est intégrée à  la holding patrimoniale de la famille Pinault qui crée en 2016
+          Digit RE Group, la plateforme de services et de solutions technologiques au bénéfice de son pôle immobilier. Chaque marque reste indépendante mais bénéficie de moyens renforcés et de la synergie des savoir-faire.</p>
+            </div>
+          </div>
+        </div>
+        <div class="one column center aligned row digitContainer">
+          <div class="column">
+            <div class="digit-re-group">
+              <div class="ui stackable grid container">
+              <div class="one column center aligned row main_logo">
+                <div class="column">
+                  <div class="sidebar"></div>
+                  <img class="logo_0" src="images/section1_segment1_digitre_logo_0.jpg" srcset="images/section1_segment1_digitre_logo_0.jpg 1x, images/section1_segment1_digitre_logo_0@2x.jpg 2x" alt="Digitre">
+                  <div class="sidebar"></div>
+                </div>
+              </div>
+              <div class="three column center aligned row">
+                <div class="column">
+                  <img src="images/section1_segment1_digitre_logo_1.jpg" srcset="images/section1_segment1_digitre_logo_1.jpg 1x, images/section1_segment1_digitre_logo_1@2x.jpg 2x" alt="Capifrance">
+                </div>
+                <div class="column">
+                  <img src="images/section1_segment1_digitre_logo_2.jpg" srcset="images/section1_segment1_digitre_logo_2.jpg 1x, images/section1_segment1_digitre_logo_2@2x.jpg 2x" alt="Drimki">
+                </div>
+                <div class="column">
+                  <img src="images/section1_segment1_digitre_logo_3.jpg" srcset="images/section1_segment1_digitre_logo_3.jpg 1x, images/section1_segment1_digitre_logo_3@2x.jpg 2x" alt="Optimhome immobilier">
+                </div>
+              </div>
+              <div class="three column center aligned row last">
+                <div class="column">
+                  <img src="images/section1_segment1_digitre_logo_4.jpg" srcset="images/section1_segment1_digitre_logo_4.jpg 1x, images/section1_segment1_digitre_logo_4@2x.jpg 2x" alt="Fleximmo">
+                </div>
+                <div class="column">
+                  <img src="images/section1_segment1_digitre_logo_5.jpg" srcset="images/section1_segment1_digitre_logo_5.jpg 1x, images/section1_segment1_digitre_logo_5@2x.jpg 2x" alt="Immobilier-neuf.com">
+                </div>
+                <div class="column">
+
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- fin sous-segment 3 -->
+
+    </section>
+
+
+
+    <!-- SECTION 2 -->
+
+    <section id="section2" class="ui container section_bp">
+      <div id="triggerNavSection2"></div>
+      <!-- sous-segment 1 -->
+      <div class="ui stackable grid container segment1 color-bg-light">
+        <div class="one column center aligned row ">
+          <div class="column">
+            <h1>
+              <span class="part1">L’IMMOBILIER</span>
+              <span class="part2">Connecté</span>
+            </h1>
+          </div>
+        </div>
+        <div class="two column center aligned row ">
+          <div class="column">
+            <div class="h2-group">
+              <h2>100% Phygital</h2>
+              <h3>Une proximité physique…</h3>
+              <p>Les conseillers vivent  à proximité de leurs clients. Ils sont leurs voisins et possèdent une connaissance fine de leur tissu local.  Experts, créateurs de liens et facilitateurs de transaction, ils les accompagnent tout au long de leur projet immobilier.</p>
+            </div>
+          </div>
+          <div class="column">
+            <img src="images/section2_segment1_v2_carte.jpg" srcset="images/section2_segment1_v2_carte.jpg 1x, images/section2_segment1_v2_carte@2x.jpg 2x">
+          </div>
+        </div>
+        <div class="two column center aligned row last">
+          <div class="column">
+            <img src="images/section2_segment1_v1_proximite.svg">
+          </div>
+          <div class="column">
+            <h3>… alliée à la puissance du digital</h3>
+            <p>Les conseillers disposent d’une palette d’outils interactifs répondant aux habitudes de consommation de leurs clients (mandat électronique, estimation en ligne, visites 3D, home staging virtuel…) et leurs annonces bénéficient d’une diffusion exceptionnelle sur tous les sites d’immobilier.</p>
+          </div>
+        </div>
+      </div>
+      <!-- fin sous-segment 1 -->
+
+      <!-- sous-segment 2 -->
+      <div class="ui stackable grid container segment2 color-bg-dark">
+
+        <div class="one column center aligned row ">
+          <div class="column">
+            <div class="h2-group">
+              <h2>Une offre globale sur tous les métiers de l’immobilier</h2>
+              <p>Le réseau couvre 100% des métiers de la transaction immobilière et permet aux conseillers d’intervenir quelles que soient les problématiques rencontrées par leurs clients.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="two column row metiers">
+          <div class="column center aligned">
+            <h3><strong>3</strong> MÉTIERS</h3>
+            <img src="images/section3_segment2_metiers.svg" alt="Capifrance - Métiers">
+          </div>
+          <div class="column center aligned">
+          <h3><strong>3</strong> SPÉCIALISATIONS</h3>
+          <img src="images/section3_segment2_specialisations.svg" alt="Capifrance - Spécialisations">
+          </div>
+        </div>
+
+      </div>
+      <!-- fin sous-segment 2 -->
+
+      <!-- sous-segment 3 -->
+      <div class="ui stackable grid container segment3 image">
+        <div class="one column center aligned row ">
+          <div class="column">
+            <div class="h2-group">
+              <h2>Des conseillers indépendants mais jamais seuls</h2>
+              <p>Pour qu’indépendant ne rime pas avec isolement, Capifrance met en place une entraide collective et un soutien permanent du siège. Tout un dispositif d’animation du réseau permet aux conseillers de se rencontrer et d’échanger leurs expériences.</p>
+              <ul>
+                <li><strong>36</strong> accompagnants en région</li>
+                <li><strong>90</strong> accompagnants au siège</li>
+                <li><strong>300</strong> formateurs</li>
+                <li><strong>315</strong> heures de formation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- fin sous-segment 3 -->
+
+    </section>
+
+
+    <!-- SECTION 3 -->
+
+    <section id="section3" class="ui container section_bp">
+      <div id="triggerNavSection3"></div>
+      <!-- sous-segment 1 -->
+      <div class="ui stackable grid container segment1 color-bg-blue">
+        <div class="one column center aligned row ">
+          <div class="column">
+            <h1>
+              <span class="part1">Des projets</span>
+              <span class="part2">AMBITIEUX</span>
+            </h1>
+            <div class="h2-group">
+              <h2>Un nouveau logo, un nouveau site et la diffusion des avis clients</h2>
+              <p>Au début de l’année 2016, Capifrance modifie son identité vers plus de modernité.
+              Son objectif : soutenir son ambition de  « Faire plus pour votre bien ». Une promesse que l’entreprise applique aussitôt en diffusant les avis clients, certifiés par un organisme tiers, sur le profil de chaque conseiller.</p>
+            </div>
+            <div class="one column center aligned row ">
+              <div class="column">
+                <img class ="identite desktop" src="images/section3_segment1_identite.png" srcset="images/section3_segment1_identite.png 1x, images/section3_segment1_identite@2x.png 2x">
+                <img class ="identite mobile" src="images/section3_segment1_identite_mobile.png" srcset="images/section3_segment1_identite_mobile.png 1x, images/section3_segment1_identite_mobile@2x.png 2x">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- fin sous-segment 1 -->
+
+      <!-- sous-segment 2 -->
+      <div class="ui stackable grid container segment2 color-bg-dark">
+
+        <div class="one column center aligned row">
+          <div class="column">
+            <div class="h2-group">
+              <h2>Un parcours client novateur</h2>
+              <p>De nouveaux services autour du bien et de l’écosystème immobilier viendront jalonner le « Parcours Client ». Il s’agira de proposer, d’ici 2020, une offre servicielle complète,  globale et multicanale, avec des solutions d’accompagnement en phase avec les attentes des consommateurs.</p>
+            </div>
+          </div>
+        </div>
+        <div class="one column center aligned row parcours">
+          <div class="column">
+            <img class ="parcours desktop" src="images/section3_segment2_parcours.jpg" srcset="images/section3_segment2_parcours.jpg 1x, images/section3_segment2_parcours@2x.jpg 2x">
+            <img class ="parcours mobile" src="images/section3_segment2_parcours_mobile.jpg" srcset="images/section3_segment2_parcours_mobile.jpg 1x, images/section3_segment2_parcours_mobile@2x.jpg 2x">
+          </div>
+        </div>
+      </div>
+      <!-- fin sous-segment 2 -->
+
+      <!-- sous-segment 3 -->
+      <div class="ui stackable grid container segment3 image">
+        <div class="one column center aligned row ">
+          <div class="column">
+            <div class="h2-group">
+              <h2>Cap vers 2020</h2>
+              <p>À horizon 2020, Capifrance a pour ambition
+              de devenir le réseau incontournable du paysage immobilier français. Le réseau projette d’étendre le maillage territorial avec 2400 conseillers
+              pour un volume de 15.000 ventes et un chiffre d’affaires prévisionnel de 110 millions d’euros.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- fin sous-segment 3 -->
+
+    </section>
+
+
+    <!-- SECTION 4 -->
+
+    <section id="section4" class="ui container section_bp">
+      <div id="triggerNavSection4"></div>
+      <!-- sous-segment 1 -->
+      <div class="ui stackable grid container segment1 color-bg-light">
+        <div class="one column center aligned row ">
+          <div class="column">
+            <h1>
+              <span class="part1">Le service INÉDIT</span>
+              <span class="part2">« À l’essai » </span>
+            </h1>
+          </div>
+        </div>
+        <div class="one column center aligned row ">
+          <div class="column">
+            <p class="essai">En novembre 2016, poursuivant sa volonté d’en faire plus pour ses clients, Capifrance lance un service sans précédent dans la transaction immobilière :<br>« L’essai avant l’achat »</p>
+            <div class="video">
+              <img src="images/video_thumb_02.jpg" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="two column left aligned row ">
+          <div class="column">
+            <p>Le principe du service « À l’essai » est simple :
+            il s’agit de donner l’opportunité à un acquéreur démontrant un réel intérêt pour un bien immobilier de conforter sa décision d’achat en y séjournant de quelques heures à une nuitée, selon l’accord
+            et les disponibilités du vendeur.</p>
+          </div>
+          <div class="column last">
+            <p class="question">Envie de tester<br> ce nouveau service ? </p>
+            <a class="lien" href="http://www.testez-votre-bien.fr" target="_blank">www.testez-votre-bien.fr</a>
+          </div>
+        </div>
+      </div>
+      <!-- fin sous-segment 1 -->
+
+    </section>
+
+
+
+
+
+    <footer class="ui large segment">
+      <div class="ui container">
+        <div class="ui stackable grid container">
+          <div class="two column row">
+            <div class="column">
+              <ul>
+                <li><a href="#"><i class="facebook f big link icon"></i></a></li>
+                <li><a href="#"><i class="twitter big link icon"></i></a></li>
+                <li><a href="#"><i class="google plus big link icon"></i></a></li>
+                <li><a href="#"><i class="pinterest big link icon"></i></a></li>
+                <li><a href="#"><i class="viadeo  big link icon"></i></a></li>
+                <li><a href="#"><i class="linkedin big link icon"></i></a></li>
+              </ul>
+            </div>
+            <div class="column copyright">
+              <span>© SAS CAPIFRANCE TOUS DROITS RÉSERVÉS</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+  </div>
+  <!-- Fin sections -->
+
+  <script src="js/semantic.min.js"></script>
+  <script src="js/TweenMax.min.js"></script>
+  <script src="js/scrollMagic.min.js"></script>
+  <script src="js/plugins/animation.gsap.min.js"></script>
+  <script src="js/owl.carousel.js"></script>
+  <script src="js/style.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>
