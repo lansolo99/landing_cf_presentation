@@ -338,7 +338,12 @@ $color-orange: #fb650a;
 
 
 
-.rwd-break{display:none;}
+.rwd-break{
+  display:block;
+  @include responsive(mobile){
+    display:none;
+  }
+}
 
 /*******************************
             Globals
@@ -526,16 +531,20 @@ header.ui.vertical.segment{
           Sections
 *******************************/
 
-
+.top-page{
+  position: relative;
+  display: block;
+  height: 50px;
+}
 .sections{
   position: relative;
   display: block;
+  /* margin-top: 10px; */
 }
 
 /* STICKY */
 
 .ui.right.rail {
-  /* @include responsive (tablet+mobile){ */
     @media only screen and (max-width: 1200px) {
     display:none;
     }
@@ -545,7 +554,6 @@ header.ui.vertical.segment{
   .ui.sticky{
     a{
       display: block;
-      padding-top: 150px;
     }
   }
 }
@@ -703,6 +711,12 @@ header.ui.vertical.segment{
 
       .one.column.main_logo{
         padding-bottom: 2em;
+        .column{
+          @include responsive(tablet+mobile){
+            border-bottom:1px solid $color-grey;
+            padding-bottom:2em!important;
+          }
+        }
       }
       .three.column.last{
         padding-bottom: 0;

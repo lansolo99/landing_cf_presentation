@@ -122,7 +122,10 @@
   .ui.stackable.grid > .column.row > .column.right.content {
     padding: 0 !important; } }
 .rwd-break {
-  display: none; }
+  display: block; }
+  @media only screen and (max-width: 767px) {
+    .rwd-break {
+      display: none; } }
 
 /*******************************
             Globals
@@ -254,21 +257,25 @@ header.ui.vertical.segment {
 /*******************************
           Sections
 *******************************/
+.top-page {
+  position: relative;
+  display: block;
+  height: 50px; }
+
 .sections {
   position: relative;
-  display: block; }
+  display: block;
+  /* margin-top: 10px; */ }
 
 /* STICKY */
 .ui.right.rail {
-  /* @include responsive (tablet+mobile){ */
   left: 750px;
   z-index: 6; }
   @media only screen and (max-width: 1200px) {
     .ui.right.rail {
       display: none; } }
   .ui.right.rail .ui.sticky a {
-    display: block;
-    padding-top: 150px; }
+    display: block; }
 
 /* ALL SECTIONS */
 .section_bp {
@@ -421,6 +428,10 @@ header.ui.vertical.segment {
             padding: 0 !important; } }
       #section1 .segment3 .digit-re-group .one.column.main_logo {
         padding-bottom: 2em; }
+        @media only screen and (max-width: 991px) {
+          #section1 .segment3 .digit-re-group .one.column.main_logo .column {
+            border-bottom: 1px solid #d8d8d8;
+            padding-bottom: 2em !important; } }
       #section1 .segment3 .digit-re-group .three.column.last {
         padding-bottom: 0; }
       #section1 .segment3 .digit-re-group img.logo_0, #section1 .segment3 .digit-re-group .sidebar {

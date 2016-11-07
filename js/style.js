@@ -9,6 +9,7 @@ $(document)
     $('.ui.sticky')
       .sticky({
         context: '.sections',
+         offset       : 150,
         silent: true
       })
     ;
