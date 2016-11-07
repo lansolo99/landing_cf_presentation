@@ -30,7 +30,7 @@ $(document)
         // $(this).addClass("active");
 
         //Animate
-        $('html, body').animate({scrollTop: $(target).offset().top -90 }, 400); // Go
+        $('html, body').animate({scrollTop: $(target).offset().top -89 }, 400); // Go
         return false;
       });
     }
